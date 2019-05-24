@@ -1,4 +1,9 @@
 #!/bin/bash
+set -e
 
-eval "docker exec -i mysql mysql \
-	--default-character-set \"utf8\" $@"
+if [ "${1#-}" != "$1" ]; then
+    set -- docker exec -i mysql mysql \
+        --default-character-set "utf8" $@
+fi
+
+eval "$@"
