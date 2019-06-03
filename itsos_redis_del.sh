@@ -44,7 +44,7 @@ fi
 for line in $lines
 do
     echo $line
-    rediscli -n $selectdb llen $line
+    rediscli -n $selectdb del $line
     echo $?
 done
 
